@@ -1,7 +1,7 @@
 import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import user_routes, product_routes
+from .routers import users, products
 
 # Configuración de logs
 logging.basicConfig(
@@ -31,8 +31,8 @@ app.add_middleware(
 )
 
 # Inclusión de rutas
-app.include_router(user_routes.router, prefix="/users", tags=["Users"])
-app.include_router(product_routes.router, prefix="/products", tags=["Products"])
+app.include_router(users.router, prefix="/users", tags=["Users"])
+app.include_router(products.router, prefix="/products", tags=["Products"])
 
 # Event handlers
 @app.on_event("startup")
@@ -48,4 +48,3 @@ async def shutdown_event():
 async def root():
     logger.info("Endpoint raíz solicitado.")
     return {"message": "Bienvenido al backend de la aplicación"}
-
