@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+dist
+.env
+
+api/.env
+client/.env
+client/node_modules
+
+blueprints/
+migrations/
+
+instance/
+__pycache__/
